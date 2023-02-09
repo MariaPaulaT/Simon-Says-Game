@@ -1,15 +1,26 @@
-var gamePattern =[randomChosenColour];
+
 var buttonColours = ["red", "blue", "green", "yellow"];
-var randomChosenColour= buttonColours[randomNumber];
+
+var gamePattern = [];
+
+var userClickedPattern =[];
+
+$("#btn").click(function(){
+    var userChosenColour = this.attr("id");
+    gamePattern.push();
+});
+
 function nextSequence(){
-    var randomNumber = Math.floor(Math.random()*4);
-    
+
+    var randomNumber = Math.floor(Math.random() * 4);
+    var randomChosenColour = buttonColours[randomNumber];
+    gamePattern.push(randomChosenColour);
+ 
+  //1. Use jQuery to select the button with the same id as the randomChosenColour
+  //2. Use Google/Stackoverflow to figure out how you can use jQuery to animate a flash to the button selected in step 1.
+  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+
+  var audio = new Audio("sounds/" + randomChosenColour + ".mp3");
+  audio.play();
 }
 
-var name ="#"+randomChosenColour; 
-$("#"+randomChosenColour).fadeTo(100, 0.3, function() { $(this).fadeTo(500, 1.0); });
-
-$(".green").click(function() {
-    var audio = new Audio('blue.mp3');
-    audio.play();
-  });
